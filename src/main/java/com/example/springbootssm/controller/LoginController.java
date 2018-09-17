@@ -14,11 +14,30 @@ import java.util.Map;
  **/
 @Controller
 public class LoginController {
-
-    @RequestMapping("login")
-    public String doLogin(@RequestParam(value = "name",required = false) String name, Map map ){
+    /**
+     * 首页
+     * */
+    @RequestMapping("")
+    public String index(@RequestParam(value = "name",required = false) String name, Map map ){
         map.put("name",name);
         return "index";
     }
+    /**
+     * 视图
+     * */
+    @RequestMapping("hello")
+    public String doLogin(@RequestParam(value = "name",required = false) String name, Map map ){
+        map.put("name",name);
+        return "system/hello";
+    }
+    /**
+     * 跳转
+     * */
+    @RequestMapping("hi")
+    public String redirect(@RequestParam(value = "name",required = false) String name, Map map ){
+        map.put("name",name);
+        return "redirect/hi";
+    }
+
 
 }
