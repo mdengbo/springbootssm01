@@ -1,8 +1,10 @@
 package com.example.springbootssm.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.Map;
 
 /**
  * @author madengbo
@@ -13,9 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class LoginController {
 
-    @RequestMapping("/login")
-    public String doLogin(String name, ModelMap modelMap ){
-        modelMap.put("name",name);
+    @RequestMapping("login")
+    public String doLogin(@RequestParam(value = "name",required = false) String name, Map map ){
+        map.put("name",name);
         return "index";
     }
 
