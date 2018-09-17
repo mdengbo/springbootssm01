@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.springbootssm.dao.BookMapper" >
+  <resultMap id="BaseResultMap" type="com.example.springbootssm.entity.Book" >
+    <result column="bookid" property="bookid" jdbcType="INTEGER" />
+    <result column="bookname" property="bookname" jdbcType="VARCHAR" />
+    <result column="authors" property="authors" jdbcType="VARCHAR" />
+    <result column="info" property="info" jdbcType="VARCHAR" />
+    <result column="comment" property="comment" jdbcType="VARCHAR" />
+    <result column="year_publication" property="yearPublication" jdbcType="DATE" />
+  </resultMap>
+  <insert id="insert" parameterType="com.example.springbootssm.entity.Book" >
+    insert into book (bookid, bookname, authors, 
+      info, comment, year_publication
+      )
+    values (#{bookid,jdbcType=INTEGER}, #{bookname,jdbcType=VARCHAR}, #{authors,jdbcType=VARCHAR}, 
+      #{info,jdbcType=VARCHAR}, #{comment,jdbcType=VARCHAR}, #{yearPublication,jdbcType=DATE}
+      )
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select bookid, bookname, authors, info, comment, year_publication
+    from book
+  </select>
+</mapper>
